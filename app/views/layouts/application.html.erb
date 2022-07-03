@@ -6,27 +6,96 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   </head>
 
   <body>
     <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div class="container">
+            <a class="navbar-brand" href="/"><span>Bookers</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+              <ul class="navbar-nav ml-auto">
+                <li>
+                  <%= link_to root_path,class:"nav-link text-light" do %>
+                    <i class="fa fa-home"></i>Home
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to users_path,class:"nav-link text-light" do %>
+                    <i class="fa fa-user"></i>Users
+                </li>
+                <li>
+                  <%= link_to books_path,class:"nav-link text-light" do %>
+                    <i class="fa fa-book"></i>Books
+                </li>
+                <li>
+                  <%= link_to root_path,class:"nav-link text-light" do %>
+                    <i class="fa fa-sign-out-alt"></i>Books
+                </li>
+              </ul>
+
+              <ul class="navbar-nav ml-auto">
+                <li>
+                  <%= link_to root_path,class:"nav-link text-light" do %>
+                    <i class="fa fa-home"></i>Home
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to users_path,class:"nav-link text-light" do %>
+                    <i class="fa fa-user"></i>About
+                </li>
+                <li>
+                  <%= link_to books_path,class:"nav-link text-light" do %>
+                    <i class="fa fa-book"></i>Sign up
+                </li>
+                <li>
+                  <%= link_to root_path,class:"nav-link text-light" do %>
+                    <i class="fa fa-sign-out-alt"></i>Log in
+                </li>
+              </ul>
+
+            </div>
+          </div>
+        </nav>
+      </header>
     <% if user_signed_in? %>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+    <%= link_to " Home", homes_top_path, method: :delete %>
+    <%= link_to " Users", users_path, method: :get %>
+    <%= link_to " Books", books_path, method: :get %>
+    <%= link_to " Log out", destroy_user_session_path, method: :delete %>
 
     <% else %>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+    <%= link_to " Home", destroy_user_session_path, method: :delete %>
+    <%= link_to " About", destroy_user_session_path, method: :delete %>
+    <%= link_to " Sign up", destroy_user_session_path, method: :delete %>
+    <%= link_to " Log in", destroy_user_session_path, method: :delete %>
 
     <% end %>
+
+
+
+    <footer>
+      <div class="container mt-5">
+  	    <div class="row">
+        	<div class="mx-auto">
+    	    	<p>CopyRight Infratop.inc</p>
+        	</div>
+        </div>
+      </div>
+    </footer>
 
     <%= yield %>
   </body>
 </html>
+
+
+ <a class="nav-link text-light" rel="nofollow" data-method="delete" href="/users/sign_out">
+                    <svg class="svg-inline--fa fa-sign-out-alt fa-w-16" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sign-out-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M497 273L329 441c-15 15-41 4.5-41-17v-96H152c-13.3 0-24-10.7-24-24v-96c0-13.3 10.7-24 24-24h136V88c0-21.4 25.9-32 41-17l168 168c9.3 9.4 9.3 24.6 0 34zM192 436v-40c0-6.6-5.4-12-12-12H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h84c6.6 0 12-5.4 12-12V76c0-6.6-5.4-12-12-12H96c-53 0-96 43-96 96v192c0 53 43 96 96 96h84c6.6 0 12-5.4 12-12z"></path></svg><!-- <i class="fas fa-sign-out-alt"></i> Font Awesome fontawesome.com --> Log out
+      </a>
