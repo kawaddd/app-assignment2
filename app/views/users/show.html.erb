@@ -3,21 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-        <h2>User info</h2>
-        <%= image_tag @user.get_profile_image %>
-        <table class="table">
-          <tbody>
-            <tr></tr>
-            <tr>
-              <th>name</th>
-              <th><%= @user.name %></th>
-            </tr>
-            <tr>
-              <th>introduction</th>
-              <th><%= @user.introduction %></th>
-            </tr>
-          </tbody>
-        </table>
+        <%= render 'user_info', user: @user %>
         <div class="row">
           <%= link_to edit_user_path(current_user),class:"btn btn-outline-secondary btn-block" do %>
             <i class="fas fa-user-cog"></i>
@@ -45,11 +31,13 @@
             </tr>
           </thead>
   		    <tbody>
+  		      <% @book.each do |book| %>
   		      <tr>
   		        <td><%= image_tag @user.get_profile_image %></td>
-  		        <td></td>
-  		        <td></td>
+  		        <td><%= link_to book.title, book_path(book) %></td>
+  		        <td><%= book.body %></td>
             </tr>
+            <% end %>
           </tbody>
         </table>
       </div>
