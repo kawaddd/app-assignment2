@@ -16,7 +16,6 @@ class UsersController < ApplicationController
     else
       redirect_to users_path
     end
-　end　　
   end
   
   def update

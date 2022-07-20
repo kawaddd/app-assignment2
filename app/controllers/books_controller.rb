@@ -18,7 +18,7 @@ class BooksController < ApplicationController
     else
       redirect_to books_path
     end
-　end　　
+  end
 
   
   def create
